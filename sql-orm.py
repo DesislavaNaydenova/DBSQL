@@ -18,16 +18,16 @@ class Artist(base):
 
 #create a class-based model for the "Album" table
 class Album(base):
-    __tablename__ = Album
+    __tablename__ = "Album"
     AlbumId = Column(Integer, primary_key = True)
     Title = Column(String)
     ArtistId = Column(Integer, ForeignKey("Artist.ArtistId"))
 
 #create a class-based model for the "Track" table
 class Track(base):
-    __tablename__ = Track
+    __tablename__ = "Track"
     TrackId = Column(Integer, primary_key = True)
-    Name = Comun(String)
+    Name = Column(String)
     AlbumId = Column(Integer, ForeignKey("Album.AlbumId"))
     MediaTypeId = Column(Integer, primary_key = False)
     GenreId = Column(Integer, primary_key = False)
@@ -47,3 +47,40 @@ session = Session()
 base.metadata.create_all(db)
 
 
+#Query1
+# artists = session.query(Artist)
+# for artist in artists:
+#     print(artist.ArtistId, artist.Name, sep = "  |  ")
+
+#Query2
+# artists = session.query(Artist)
+# for artist in artists:
+#     print(artist.Name)
+
+#Query3
+# artist = session.query(Artist).filter_by(Name= "Queen").first()
+# print(artist.ArtistId, artist.Name, sep= "  |  ")
+
+#Query4
+# artist = session.query(Artist).filter_by(ArtistId= 51).first()
+# print(artist.ArtistId, artist.Name, sep = "  |  ")
+
+#Query5
+# albums = session.query(Album).filter_by(ArtistId = 51)
+# for album in albums:
+#     print(album.AlbumId, album.Title , album.ArtistId, sep = "  |  ")
+
+#Query6
+tracks = session.query(Track).filter_by(Composer = "Queen")
+for track in tracks:
+    print(
+    track.TrackId, 
+    track.Name, 
+    track.AlbumId,
+    track.MediaTypeId, 
+    track.GenreId, 
+    track.Composer, 
+    track.Milliseconds, 
+    track.Bytes, 
+    track.UnitPrice, 
+    sep="  |  ")
