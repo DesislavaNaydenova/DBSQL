@@ -38,8 +38,44 @@ ada_lovelace = Programmer(
     famous_for = "First Programmer"
 )
 
+alan_turing = Programmer(
+    first_name = "Alan",
+    last_name = "Turing",
+    gender = "M",
+    nationality = "British",
+    famous_for = "Modern Computing"
+)
+
+grace_hopper = Programmer(
+    first_name = "Grace",
+    last_name = "Hopper",
+    gender = "F",
+    nationality = "American",
+    famous_for = "COBOL language"
+)
+
+margaret_hamilton = Programmer(
+    first_name = "Margaret",
+    last_name = "Hamilton",
+    gender = "F",
+    nationality = "American",
+    famous_for = "Apolo 11"
+)
+
+
+desislava_naydenova = Programmer(
+    first_name = "Desislava",
+    last_name = "Naydenova",
+    gender = "F",
+    nationality = "Bulgarian",
+    famous_for = "Best person ever"
+)
 #add each instance of our programmers to our session
-session.add(ada_lovelace)
+# session.add(ada_lovelace)
+session.add(alan_turing)
+session.add(grace_hopper)
+session.add(margaret_hamilton)
+session.add(desislava_naydenova)
 
 #commit our session to tha database
 session.commit()
