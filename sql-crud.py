@@ -72,13 +72,29 @@ desislava_naydenova = Programmer(
 )
 #add each instance of our programmers to our session
 # session.add(ada_lovelace)
-session.add(alan_turing)
-session.add(grace_hopper)
-session.add(margaret_hamilton)
-session.add(desislava_naydenova)
+# session.add(alan_turing)
+# session.add(grace_hopper)
+# session.add(margaret_hamilton)
+# session.add(desislava_naydenova)
 
 #commit our session to tha database
-session.commit()
+#session.commit()
+
+#updating a single record
+# programmer = session.query(Programmer).filter_by(id=1).first()
+# programmer.famous_for= "World president"
+# session.commit()
+
+#update multiply records
+people = session.query(Programmer)
+for person in people:
+    if person.gender =="F":
+        person.gender ="female"
+    elif person.gender =="M":
+        person.gender = "male"
+    else:
+        print("Gender not defined")
+    session.commit()
 
 #query the database to find all programmers
 programmers = session.query(Programmer)
